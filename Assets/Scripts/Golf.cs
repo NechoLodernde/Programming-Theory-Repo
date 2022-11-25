@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golf : MonoBehaviour
+public class Golf : Sphere
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        SetMass();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void SetMass()
     {
-        
+        gameObject.GetComponent<Rigidbody>().mass = 5;
     }
 }

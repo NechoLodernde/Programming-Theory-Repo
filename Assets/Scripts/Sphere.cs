@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            StartCoroutine(DestroyObject());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void SetMass()
     {
-        
+        gameObject.GetComponent<Rigidbody>().mass = 1;
+    }
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("Will destroy");
+        Destroy(gameObject);
+        SpawnManager spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+        spawnManager.SetLimit();
     }
 }
