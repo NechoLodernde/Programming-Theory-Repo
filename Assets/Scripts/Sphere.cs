@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sphere : MonoBehaviour
 {
 
-    protected void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision) // ENCAPSULATION
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -13,7 +13,7 @@ public class Sphere : MonoBehaviour
         }
     }
 
-    protected virtual void SetMass()
+    protected virtual void SetMass() // ENCAPSULATION
     {
         gameObject.GetComponent<Rigidbody>().mass = 1;
     }
